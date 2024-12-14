@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Mirror</title>
+    <style>
+        #container {
+            margin: 0px auto;
+            width: 670px;
+            height: 500px;
+            border: 10px #333 solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+        }
+        #videoElement {
+            width: 670px;
+            height: 500px;
+            background-color: #666;
+        }
+        </style>
+</head>
+<body>
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+        
+        </video>
+    </div>
+    <h1 id="quote">Webcam Mirror</h1>
+    <script>
+    var video = document.querySelector("#videoElement");
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+}
+
+const quotes = [
+    "Despite everything, it's still you.",
+    "Smile, you are beautiful.",
+    "You are beautiful.",
+    "See yourself the way others see you."
+];
+
+const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+document.getElementById("quote").innerText = randomQuote;
+    </script>
+</body>
+</html>
